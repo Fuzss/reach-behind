@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:glow_item_frame",
+    "minecraft:item_frame",
+    {
+      "id": "#fastitemframes:item_frames",
+      "required": false
+    }
+  ]
+}

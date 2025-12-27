@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#minecraft:banners",
+    {
+      "id": "#fastitemframes:item_frames",
+      "required": false
+    },
+    "#minecraft:wall_signs"
+  ]
+}
