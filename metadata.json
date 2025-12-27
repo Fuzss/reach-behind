@@ -1,8 +1,8 @@
 {
     "mod": {
-        "id": "examplemod",
-        "group": "fuzs.examplemod",
-        "name": "Example Mod",
+        "id": "reachbehind",
+        "group": "fuzs.reachbehind",
+        "name": "Reach Behind",
         "version": "21.11.0",
         "authors": [
             "Fuzs"
@@ -37,12 +37,12 @@
     "links": [
         {
             "name": "github",
-            "slug": "example-mod"
+            "slug": "reach-behind"
         }
     ],
     "environments": {
-        "client": "required",
-        "server": "required"
+        "client": "optional",
+        "server": "optional"
     },
     "platforms": [
         "fabric",
