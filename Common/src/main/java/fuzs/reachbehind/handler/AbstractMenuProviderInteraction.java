@@ -20,8 +20,6 @@ import java.util.function.Function;
 
 public abstract class AbstractMenuProviderInteraction {
 
-    protected abstract boolean supportsCurrentEnvironment(boolean isClientSide);
-
     public @Nullable InteractionResult interactWithEntity(Player player, Level level, InteractionHand interactionHand, Entity entity) {
         BlockPos blockPos = entity.blockPosition();
         if (this.isEntityPassingThroughClicks(entity)) {

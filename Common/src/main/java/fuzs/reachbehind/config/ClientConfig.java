@@ -3,6 +3,8 @@ package fuzs.reachbehind.config;
 import fuzs.puzzleslib.api.config.v3.Config;
 import fuzs.puzzleslib.api.config.v3.serialization.ConfigDataSet;
 import fuzs.puzzleslib.api.config.v3.serialization.KeyedValueProvider;
+import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
+import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.data.tags.ModBlockTagProvider;
 import fuzs.reachbehind.data.tags.ModEntityTypeTagProvider;
 import fuzs.reachbehind.init.ModRegistry;
@@ -32,7 +34,18 @@ public class ClientConfig extends ServerConfig {
     }
 
     @Override
-    protected String getEffectiveEnvironmentLine() {
-        return "This option only takes effect for yourself playing on a multiplayer server which does not have this mod installed.";
+    public boolean supportsCurrentEnvironment(boolean isClientSide) {
+        if (!this.passClicksToAttachedBlockValue.get()) {
+            return false;
+        } else if (NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    String getEffectiveEnvironmentLine() {
+        return "This option only takes effect in singleplayer and for players on a multiplayer server which does not have this mod installed.";
     }
 }

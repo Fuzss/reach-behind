@@ -43,8 +43,8 @@ public class ReachBehindClient implements ClientModConstructor {
     public void onRegisterKeyMappings(KeyMappingsContext context) {
         context.registerKeyMapping(TOGGLE_REACHING_BEHIND_BLOCKS_KEY_MAPPING,
                 KeyActivationHandler.forGame((Minecraft minecraft) -> {
-                    SharedConfig serverConfig = chooseSharedConfig(minecraft);
-                    Component component = chooseFeedbackComponent(serverConfig);
+                    SharedConfig sharedConfig = chooseSharedConfig(minecraft);
+                    Component component = chooseFeedbackComponent(sharedConfig);
                     minecraft.gui.setOverlayMessage(component, false);
                 }));
     }

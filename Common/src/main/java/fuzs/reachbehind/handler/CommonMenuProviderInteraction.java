@@ -1,7 +1,6 @@
 package fuzs.reachbehind.handler;
 
 import fuzs.puzzleslib.api.event.v1.core.EventResultHolder;
-import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.config.ServerConfig;
 import fuzs.reachbehind.init.ModRegistry;
@@ -26,7 +25,8 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResultHolder<InteractionResult> onUseEntity(Player player, Level level, InteractionHand interactionHand, Entity entity) {
-        if (!this.supportsCurrentEnvironment(level.isClientSide())) {
+        if (!ReachBehind.CONFIG.getHolder(ServerConfig.class).isAvailable()
+                || !ReachBehind.CONFIG.get(ServerConfig.class).supportsCurrentEnvironment(level.isClientSide())) {
             return EventResultHolder.pass();
         }
 
@@ -39,7 +39,8 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResultHolder<InteractionResult> onUseBlock(Player player, Level level, InteractionHand interactionHand, BlockHitResult hitResult) {
-        if (!this.supportsCurrentEnvironment(level.isClientSide())) {
+        if (!ReachBehind.CONFIG.getHolder(ServerConfig.class).isAvailable()
+                || !ReachBehind.CONFIG.get(ServerConfig.class).supportsCurrentEnvironment(level.isClientSide())) {
             return EventResultHolder.pass();
         }
 
@@ -48,17 +49,6 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
             return EventResultHolder.interrupt(interactionResult);
         } else {
             return EventResultHolder.pass();
-        }
-    }
-
-    @Override
-    protected boolean supportsCurrentEnvironment(boolean isClientSide) {
-        if (!ReachBehind.CONFIG.get(ServerConfig.class).passClicksToAttachedBlock) {
-            return false;
-        } else if (isClientSide && !NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {
-            return false;
-        } else {
-            return true;
         }
     }
 

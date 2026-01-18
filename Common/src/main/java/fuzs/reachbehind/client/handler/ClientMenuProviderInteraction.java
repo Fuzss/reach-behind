@@ -2,7 +2,6 @@ package fuzs.reachbehind.client.handler;
 
 import fuzs.puzzleslib.api.core.v1.ModLoaderEnvironment;
 import fuzs.puzzleslib.api.event.v1.core.EventResult;
-import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.config.ClientConfig;
 import fuzs.reachbehind.handler.AbstractMenuProviderInteraction;
@@ -28,7 +27,7 @@ public final class ClientMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResult onUseInteraction(Minecraft minecraft, LocalPlayer player, InteractionHand interactionHand, HitResult hitResult) {
-        if (!this.supportsCurrentEnvironment(true)) {
+        if (!ReachBehind.CONFIG.get(ClientConfig.class).supportsCurrentEnvironment(true)) {
             return EventResult.PASS;
         }
 
@@ -59,17 +58,6 @@ public final class ClientMenuProviderInteraction extends AbstractMenuProviderInt
             return EventResult.INTERRUPT;
         } else {
             return EventResult.PASS;
-        }
-    }
-
-    @Override
-    protected boolean supportsCurrentEnvironment(boolean isClientSide) {
-        if (!ReachBehind.CONFIG.get(ClientConfig.class).passClicksToAttachedBlock) {
-            return false;
-        } else if (NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {
-            return false;
-        } else {
-            return true;
         }
     }
 
