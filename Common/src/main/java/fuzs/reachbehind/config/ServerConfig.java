@@ -1,9 +1,9 @@
 package fuzs.reachbehind.config;
 
-import fuzs.puzzleslib.api.config.v3.Config;
-import fuzs.puzzleslib.api.config.v3.ConfigCore;
-import fuzs.puzzleslib.api.config.v3.ValueCallback;
-import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
+import fuzs.puzzleslib.common.api.config.v3.Config;
+import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
+import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
+import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.ReachBehind;
 import net.neoforged.neoforge.common.ModConfigSpec;
 

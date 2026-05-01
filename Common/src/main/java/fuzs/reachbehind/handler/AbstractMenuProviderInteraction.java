@@ -15,7 +15,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Map;
 import java.util.function.Function;
 
 public abstract class AbstractMenuProviderInteraction {
@@ -61,9 +60,9 @@ public abstract class AbstractMenuProviderInteraction {
 
     private Direction getNeighborDirection(BlockState blockState, BlockHitResult hitResult) {
         Direction direction = hitResult.getDirection();
-        for (Map.Entry<Property<?>, Comparable<?>> entry : blockState.getValues().entrySet()) {
-            if (entry.getKey().getValueClass() == Direction.class) {
-                direction = (Direction) entry.getValue();
+        for (Property.Value<?> value : blockState.getValues().toList()) {
+            if (value.property().getValueClass() == Direction.class) {
+                direction = (Direction) value.value();
                 break;
             }
         }

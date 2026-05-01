@@ -1,12 +1,12 @@
 package fuzs.reachbehind.client;
 
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.client.core.v1.context.KeyMappingsContext;
-import fuzs.puzzleslib.api.client.event.v1.entity.player.InteractionInputEvents;
-import fuzs.puzzleslib.api.client.key.v1.KeyActivationHandler;
-import fuzs.puzzleslib.api.client.key.v1.KeyMappingHelper;
-import fuzs.puzzleslib.api.event.v1.core.EventPhase;
-import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.core.v1.context.KeyMappingsContext;
+import fuzs.puzzleslib.common.api.client.event.v1.entity.player.InteractionInputEvents;
+import fuzs.puzzleslib.common.api.client.key.v1.KeyActivationHandler;
+import fuzs.puzzleslib.common.api.client.key.v1.KeyMappingHelper;
+import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
+import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.client.handler.ClientMenuProviderInteraction;
 import fuzs.reachbehind.config.ClientConfig;

@@ -1,9 +1,9 @@
 package fuzs.reachbehind.config;
 
-import fuzs.puzzleslib.api.config.v3.Config;
-import fuzs.puzzleslib.api.config.v3.serialization.ConfigDataSet;
-import fuzs.puzzleslib.api.config.v3.serialization.KeyedValueProvider;
-import fuzs.puzzleslib.api.network.v4.NetworkingHelper;
+import fuzs.puzzleslib.common.api.config.v3.Config;
+import fuzs.puzzleslib.common.api.config.v3.serialization.ConfigDataSet;
+import fuzs.puzzleslib.common.api.config.v3.serialization.KeyedValueProvider;
+import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.data.tags.ModBlockTagProvider;
 import fuzs.reachbehind.data.tags.ModEntityTypeTagProvider;

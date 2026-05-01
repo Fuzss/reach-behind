@@ -1,6 +1,6 @@
 package fuzs.reachbehind.handler;
 
-import fuzs.puzzleslib.api.event.v1.core.EventResultHolder;
+import fuzs.puzzleslib.common.api.event.v1.core.EventResultHolder;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.config.ServerConfig;
 import fuzs.reachbehind.init.ModRegistry;
@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public final class CommonMenuProviderInteraction extends AbstractMenuProviderInteraction {
@@ -24,7 +25,7 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
         // NO-OP
     }
 
-    public EventResultHolder<InteractionResult> onUseEntity(Player player, Level level, InteractionHand interactionHand, Entity entity) {
+    public EventResultHolder<InteractionResult> onUseEntity(Player player, Level level, InteractionHand interactionHand, Entity entity, Vec3 hitVector) {
         if (!ReachBehind.CONFIG.getHolder(ServerConfig.class).isAvailable()
                 || !ReachBehind.CONFIG.get(ServerConfig.class).supportsCurrentEnvironment(level.isClientSide())) {
             return EventResultHolder.pass();
@@ -54,7 +55,7 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
 
     @Override
     protected boolean isEntityPassingThroughClicks(Entity entity) {
-        return entity.getType().is(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG);
+        return entity.is(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG);
     }
 
     @Override

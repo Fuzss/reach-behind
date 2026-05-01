@@ -1,7 +1,7 @@
 package fuzs.reachbehind.client.handler;
 
-import fuzs.puzzleslib.api.core.v1.ModLoaderEnvironment;
-import fuzs.puzzleslib.api.event.v1.core.EventResult;
+import fuzs.puzzleslib.common.api.core.v1.ModLoaderEnvironment;
+import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
 import fuzs.reachbehind.ReachBehind;
 import fuzs.reachbehind.config.ClientConfig;
 import fuzs.reachbehind.handler.AbstractMenuProviderInteraction;
