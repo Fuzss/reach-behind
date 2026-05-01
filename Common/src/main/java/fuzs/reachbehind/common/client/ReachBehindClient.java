@@ -1,5 +1,6 @@
-package fuzs.reachbehind.client;
+package fuzs.reachbehind.common.client;
 
+import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.client.core.v1.context.KeyMappingsContext;
 import fuzs.puzzleslib.common.api.client.event.v1.entity.player.InteractionInputEvents;
@@ -7,11 +8,11 @@ import fuzs.puzzleslib.common.api.client.key.v1.KeyActivationHandler;
 import fuzs.puzzleslib.common.api.client.key.v1.KeyMappingHelper;
 import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
 import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.client.handler.ClientMenuProviderInteraction;
-import fuzs.reachbehind.config.ClientConfig;
-import fuzs.reachbehind.config.ServerConfig;
-import fuzs.reachbehind.config.SharedConfig;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.client.handler.ClientMenuProviderInteraction;
+import fuzs.reachbehind.common.config.ClientConfig;
+import fuzs.reachbehind.common.config.ServerConfig;
+import fuzs.reachbehind.common.config.SharedConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -50,7 +51,7 @@ public class ReachBehindClient implements ClientModConstructor {
     }
 
     /**
-     * @see fuzs.reachbehind.handler.AbstractMenuProviderInteraction
+     * @see AbstractMenuProviderInteraction
      */
     private static @Nullable SharedConfig chooseSharedConfig(Minecraft minecraft) {
         if (!NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {

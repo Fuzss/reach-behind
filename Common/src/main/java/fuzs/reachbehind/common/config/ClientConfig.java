@@ -1,13 +1,13 @@
-package fuzs.reachbehind.config;
+package fuzs.reachbehind.common.config;
 
 import fuzs.puzzleslib.common.api.config.v3.Config;
 import fuzs.puzzleslib.common.api.config.v3.serialization.ConfigDataSet;
 import fuzs.puzzleslib.common.api.config.v3.serialization.KeyedValueProvider;
 import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.data.tags.ModBlockTagProvider;
-import fuzs.reachbehind.data.tags.ModEntityTypeTagProvider;
-import fuzs.reachbehind.init.ModRegistry;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.data.tags.ModBlockTagProvider;
+import fuzs.reachbehind.common.data.tags.ModEntityTypeTagProvider;
+import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;

@@ -1,13 +1,13 @@
-package fuzs.reachbehind;
+package fuzs.reachbehind.common;
 
 import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
 import fuzs.puzzleslib.common.api.event.v1.entity.player.PlayerInteractEvents;
-import fuzs.reachbehind.config.ClientConfig;
-import fuzs.reachbehind.config.ServerConfig;
-import fuzs.reachbehind.handler.CommonMenuProviderInteraction;
-import fuzs.reachbehind.init.ModRegistry;
+import fuzs.reachbehind.common.config.ClientConfig;
+import fuzs.reachbehind.common.config.ServerConfig;
+import fuzs.reachbehind.common.handler.CommonMenuProviderInteraction;
+import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

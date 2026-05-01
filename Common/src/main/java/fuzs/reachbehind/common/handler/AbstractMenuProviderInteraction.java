@@ -1,6 +1,6 @@
-package fuzs.reachbehind.handler;
+package fuzs.reachbehind.common.handler;
 
-import fuzs.reachbehind.init.ModRegistry;
+import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;

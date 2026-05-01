@@ -1,7 +1,7 @@
 package fuzs.reachbehind.fabric.client;
 
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.client.ReachBehindClient;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.client.ReachBehindClient;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.fabricmc.api.ClientModInitializer;
 

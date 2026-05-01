@@ -1,9 +1,9 @@
-package fuzs.reachbehind.data.client;
+package fuzs.reachbehind.common.data.client;
 
 import fuzs.puzzleslib.common.api.client.data.v2.AbstractLanguageProvider;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.client.ReachBehindClient;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.client.ReachBehindClient;
 
 public class ModLanguageProvider extends AbstractLanguageProvider {
 

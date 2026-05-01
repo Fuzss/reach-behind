@@ -1,10 +1,10 @@
-package fuzs.reachbehind.config;
+package fuzs.reachbehind.common.config;
 
 import fuzs.puzzleslib.common.api.config.v3.Config;
 import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
 import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
-import fuzs.reachbehind.ReachBehind;
+import fuzs.reachbehind.common.ReachBehind;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ServerConfig implements ConfigCore, SharedConfig {

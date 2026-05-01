@@ -1,6 +1,6 @@
 package fuzs.reachbehind.fabric;
 
-import fuzs.reachbehind.ReachBehind;
+import fuzs.reachbehind.common.ReachBehind;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 

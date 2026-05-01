@@ -3,9 +3,9 @@ package fuzs.reachbehind.neoforge;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.common.api.core.v1.ModLoaderEnvironment;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.data.tags.ModBlockTagProvider;
-import fuzs.reachbehind.data.tags.ModEntityTypeTagProvider;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.data.tags.ModBlockTagProvider;
+import fuzs.reachbehind.common.data.tags.ModEntityTypeTagProvider;
 import net.neoforged.fml.common.Mod;
 
 @Mod(ReachBehind.MOD_ID)

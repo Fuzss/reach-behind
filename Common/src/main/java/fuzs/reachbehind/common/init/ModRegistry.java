@@ -1,7 +1,7 @@
-package fuzs.reachbehind.init;
+package fuzs.reachbehind.common.init;
 
 import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
-import fuzs.reachbehind.ReachBehind;
+import fuzs.reachbehind.common.ReachBehind;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;

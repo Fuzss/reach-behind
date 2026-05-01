@@ -1,10 +1,10 @@
-package fuzs.reachbehind.client.handler;
+package fuzs.reachbehind.common.client.handler;
 
 import fuzs.puzzleslib.common.api.core.v1.ModLoaderEnvironment;
 import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.config.ClientConfig;
-import fuzs.reachbehind.handler.AbstractMenuProviderInteraction;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.config.ClientConfig;
+import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;

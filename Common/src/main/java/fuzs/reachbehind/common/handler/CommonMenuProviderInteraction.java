@@ -1,9 +1,9 @@
-package fuzs.reachbehind.handler;
+package fuzs.reachbehind.common.handler;
 
 import fuzs.puzzleslib.common.api.event.v1.core.EventResultHolder;
-import fuzs.reachbehind.ReachBehind;
-import fuzs.reachbehind.config.ServerConfig;
-import fuzs.reachbehind.init.ModRegistry;
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.config.ServerConfig;
+import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
