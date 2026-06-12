@@ -8,7 +8,7 @@
         "authors": [
             "Fuzs"
         ],
-        "description": "Example description.",
+        "description": "Click through decorations and interact with the blocks behind them.",
         "license": "MPL-2.0"
     },
     "dependencies": [
@@ -37,8 +37,18 @@
     ],
     "links": [
         {
+            "name": "curseforge",
+            "slug": "reach-behind",
+            "id": "1572990"
+        },
+        {
             "name": "github",
             "slug": "reach-behind"
+        },
+        {
+            "name": "modrinth",
+            "slug": "reach-behind",
+            "id": "MDljZreW"
         }
     ],
     "environments": {
