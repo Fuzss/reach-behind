@@ -17,12 +17,12 @@ import java.util.List;
 public class ClientConfig extends ServerConfig {
     @Config(name = "passes_block_clicks_through",
             description = "The hanging blocks that are permitted to pass clicks to the block they attach to.")
-    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonTagEntries(KeyedValueProvider.tagAppender(
-            Registries.BLOCK).addTag(ModRegistry.PASSES_CLICKS_THROUGH_BLOCK_TAG)).asStringList();
+    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonTagEntries(KeyedValueProvider.<Block>tags()
+            .addTag(ModRegistry.PASSES_CLICKS_THROUGH_BLOCK_TAG)).asStringList();
     @Config(name = "passes_entity_clicks_through",
             description = "The hanging entities that are permitted to pass clicks to the block they attach to.")
-    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonTagEntries(KeyedValueProvider.tagAppender(
-            Registries.ENTITY_TYPE).addTag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG)).asStringList();
+    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonTagEntries(KeyedValueProvider.<EntityType<?>>tags()
+            .addTag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG)).asStringList();
 
     public ConfigDataSet<Block> passesBlockClicksThrough = ConfigDataSet.from(Registries.BLOCK);
     public ConfigDataSet<EntityType<?>> passesEntityClicksThrough = ConfigDataSet.from(Registries.ENTITY_TYPE);

@@ -1,6 +1,5 @@
 package fuzs.reachbehind.common.client;
 
-import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.client.core.v1.context.KeyMappingsContext;
 import fuzs.puzzleslib.common.api.client.event.v1.entity.player.InteractionInputEvents;
@@ -13,6 +12,7 @@ import fuzs.reachbehind.common.client.handler.ClientMenuProviderInteraction;
 import fuzs.reachbehind.common.config.ClientConfig;
 import fuzs.reachbehind.common.config.ServerConfig;
 import fuzs.reachbehind.common.config.SharedConfig;
+import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -46,7 +46,7 @@ public class ReachBehindClient implements ClientModConstructor {
                 KeyActivationHandler.forGame((Minecraft minecraft) -> {
                     SharedConfig sharedConfig = chooseSharedConfig(minecraft);
                     Component component = chooseFeedbackComponent(sharedConfig);
-                    minecraft.gui.setOverlayMessage(component, false);
+                    minecraft.gui.hud.setOverlayMessage(component, false);
                 }));
     }
 

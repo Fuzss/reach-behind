@@ -4,7 +4,7 @@ import fuzs.puzzleslib.common.api.event.v1.core.EventResultHolder;
 import fuzs.reachbehind.common.ReachBehind;
 import fuzs.reachbehind.common.config.ServerConfig;
 import fuzs.reachbehind.common.init.ModRegistry;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
