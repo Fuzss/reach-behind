@@ -1,6 +1,6 @@
 {
-  "key.category.reachbehind.main": "Reach Behind",
-  "key.reachbehind.toggle_reaching_behind_blocks": "Toggle Reaching Behind Blocks",
-  "key.reachbehind.toggle_reaching_behind_blocks.message": "Reach Behind Blocks: %s",
-  "key.reachbehind.toggle_reaching_behind_blocks.unavailable": "Reaching behind blocks is controlled by the server."
+  "key.categories.reachbehind": "Reach Behind",
+  "key.toggle_reaching_behind_blocks": "Toggle Reaching Behind Blocks",
+  "key.toggle_reaching_behind_blocks.message": "Reach Behind Blocks: %s",
+  "key.toggle_reaching_behind_blocks.unavailable": "Reaching behind blocks is controlled by the server."
 }

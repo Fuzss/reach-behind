@@ -8,7 +8,7 @@ import fuzs.reachbehind.config.ClientConfig;
 import fuzs.reachbehind.config.ServerConfig;
 import fuzs.reachbehind.handler.CommonMenuProviderInteraction;
 import fuzs.reachbehind.init.ModRegistry;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ public class ReachBehind implements ModConstructor {
                 CommonMenuProviderInteraction.INSTANCE::onUseEntity);
     }
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }

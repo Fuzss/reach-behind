@@ -9,13 +9,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public final class CommonMenuProviderInteraction extends AbstractMenuProviderInteraction {
     public static final CommonMenuProviderInteraction INSTANCE = new CommonMenuProviderInteraction();
@@ -74,7 +75,7 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     @Override
     protected @Nullable InteractionResult useBlock(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
         ItemStack itemStack = player.getItemInHand(interactionHand).copy();
-        InteractionResult useItemOnResult;
+        ItemInteractionResult useItemOnResult;
         if (!this.requiresEmptyHand()) {
             useItemOnResult = blockState.useItemOn(player.getItemInHand(interactionHand),
                     level,
@@ -86,13 +87,13 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
                 }
 
-                return useItemOnResult;
+                return useItemOnResult.result();
             }
         } else {
-            useItemOnResult = InteractionResult.TRY_WITH_EMPTY_HAND;
+            useItemOnResult = ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
 
-        if (useItemOnResult instanceof InteractionResult.TryEmptyHandInteraction
+        if (useItemOnResult == ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION
                 && interactionHand == InteractionHand.MAIN_HAND) {
             InteractionResult useWithoutItemResult = blockState.useWithoutItem(level, player, hitResult);
             if (useWithoutItemResult.consumesAction()) {
