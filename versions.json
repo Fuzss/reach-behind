@@ -5,11 +5,17 @@
     "26.1.x": "maintained",
     "26.2.x": "primary"
   },
-  "properties": {
-    "distributions.curseforge.id": "1572990",
-    "distributions.curseforge.slug": "reach-behind",
-    "distributions.github.slug": "reach-behind",
-    "distributions.modrinth.id": "MDljZreW",
-    "distributions.modrinth.slug": "reach-behind"
+  "distributions": {
+    "curseforge": {
+      "id": "1572990",
+      "slug": "reach-behind"
+    },
+    "github": {
+      "slug": "reach-behind"
+    },
+    "modrinth": {
+      "id": "MDljZreW",
+      "slug": "reach-behind"
+    }
   }
 }
