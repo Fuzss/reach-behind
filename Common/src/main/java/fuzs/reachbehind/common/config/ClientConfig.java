@@ -4,8 +4,8 @@ import fuzs.puzzleslib.common.api.config.v3.Config;
 import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
 import fuzs.puzzleslib.common.api.config.v3.serialization.ConfigDataSet;
 import fuzs.puzzleslib.common.api.config.v3.serialization.KeyedValueProvider;
-import fuzs.reachbehind.common.data.tags.ModBlockTagProvider;
-import fuzs.reachbehind.common.data.tags.ModEntityTypeTagProvider;
+import fuzs.reachbehind.common.data.tags.ModBlockTagsProvider;
+import fuzs.reachbehind.common.data.tags.ModEntityTypeTagsProvider;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
@@ -18,13 +18,13 @@ public class ClientConfig implements ConfigCore {
     @Config(name = "passes_block_clicks_through", description = {
             "The hanging blocks that are permitted to pass clicks to the block they attach to.", CLIENT_ONLY_DISCLAIMER
     })
-    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonBlocks(KeyedValueProvider.<Block>tags(
+    List<String> passesBlockClicksThroughRaw = ModBlockTagsProvider.addCommonBlocks(KeyedValueProvider.<Block>tags(
             Registries.BLOCK)).asStringList();
     @Config(name = "passes_entity_clicks_through", description = {
             "The hanging entities that are permitted to pass clicks to the block they attach to.",
             CLIENT_ONLY_DISCLAIMER
     })
-    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonEntities(KeyedValueProvider.<EntityType<?>>tags(
+    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagsProvider.addCommonEntities(KeyedValueProvider.<EntityType<?>>tags(
             Registries.ENTITY_TYPE)).asStringList();
 
     public ConfigDataSet<Block> passesBlockClicksThrough = ConfigDataSet.from(Registries.BLOCK);
