@@ -42,7 +42,7 @@ public class ReachBehindClient implements ClientModConstructor {
                 KeyActivationHandler.forGame((Minecraft minecraft) -> {
                     boolean mayUseToggleKeybind = mayUseToggleKeybind(minecraft);
                     Component component = pickFeedbackComponent(mayUseToggleKeybind);
-                    minecraft.gui.hud.setOverlayMessage(component, false);
+                    minecraft.gui.setOverlayMessage(component, false);
                 }));
     }
 

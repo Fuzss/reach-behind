@@ -18,14 +18,14 @@ public class ClientConfig implements ConfigCore {
     @Config(name = "passes_block_clicks_through", description = {
             "The hanging blocks that are permitted to pass clicks to the block they attach to.", CLIENT_ONLY_DISCLAIMER
     })
-    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonBlocks(KeyedValueProvider.<Block>tags())
-            .asStringList();
+    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonBlocks(KeyedValueProvider.<Block>tags(
+            Registries.BLOCK)).asStringList();
     @Config(name = "passes_entity_clicks_through", description = {
             "The hanging entities that are permitted to pass clicks to the block they attach to.",
             CLIENT_ONLY_DISCLAIMER
     })
-    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonEntities(KeyedValueProvider.<EntityType<?>>tags())
-            .asStringList();
+    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonEntities(KeyedValueProvider.<EntityType<?>>tags(
+            Registries.ENTITY_TYPE)).asStringList();
 
     public ConfigDataSet<Block> passesBlockClicksThrough = ConfigDataSet.from(Registries.BLOCK);
     public ConfigDataSet<EntityType<?>> passesEntityClicksThrough = ConfigDataSet.from(Registries.ENTITY_TYPE);
