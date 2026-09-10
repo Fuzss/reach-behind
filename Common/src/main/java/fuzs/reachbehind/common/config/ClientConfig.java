@@ -13,21 +13,18 @@ import net.minecraft.world.level.block.Block;
 import java.util.List;
 
 public class ClientConfig implements ConfigCore {
-    private static final String CLIENT_ONLY_DISCLAIMER = "This option only takes effect when playing on a multiplayer server which does not have this mod installed.";
+    private static final String CLIENT_ONLY_DISCLAIMER = "This option only takes effect when playing on a multiplayer server without this mod installed. In all other scenarios, configure the respective tag instead.";
 
-    @Config(name = "passes_block_clicks_through",
-            description = {
-                    "The hanging blocks that are permitted to pass clicks to the block they attach to.",
-                    CLIENT_ONLY_DISCLAIMER
-            })
-    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonTagEntries(KeyedValueProvider.<Block>tags())
+    @Config(name = "passes_block_clicks_through", description = {
+            "The hanging blocks that are permitted to pass clicks to the block they attach to.", CLIENT_ONLY_DISCLAIMER
+    })
+    List<String> passesBlockClicksThroughRaw = ModBlockTagProvider.addCommonBlocks(KeyedValueProvider.<Block>tags())
             .asStringList();
-    @Config(name = "passes_entity_clicks_through",
-            description = {
-                    "The hanging entities that are permitted to pass clicks to the block they attach to.",
-                    CLIENT_ONLY_DISCLAIMER
-            })
-    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonTagEntries(KeyedValueProvider.<EntityType<?>>tags())
+    @Config(name = "passes_entity_clicks_through", description = {
+            "The hanging entities that are permitted to pass clicks to the block they attach to.",
+            CLIENT_ONLY_DISCLAIMER
+    })
+    List<String> passesEntityClicksThroughRaw = ModEntityTypeTagProvider.addCommonEntities(KeyedValueProvider.<EntityType<?>>tags())
             .asStringList();
 
     public ConfigDataSet<Block> passesBlockClicksThrough = ConfigDataSet.from(Registries.BLOCK);

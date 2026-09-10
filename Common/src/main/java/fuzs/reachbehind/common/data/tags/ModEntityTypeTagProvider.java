@@ -17,10 +17,10 @@ public class ModEntityTypeTagProvider extends AbstractTagProvider<EntityType<?>>
 
     @Override
     public void addTags(HolderLookup.Provider registries) {
-        addCommonTagEntries(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG));
+        addCommonEntities(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG));
     }
 
-    public static AbstractTagAppender<EntityType<?>> addCommonTagEntries(AbstractTagAppender<EntityType<?>> tagAppender) {
+    public static AbstractTagAppender<EntityType<?>> addCommonEntities(AbstractTagAppender<EntityType<?>> tagAppender) {
         return tagAppender.add(EntityTypeIds.ITEM_FRAME, EntityTypeIds.GLOW_ITEM_FRAME)
                 .addOptionalTag("fastitemframes:item_frames");
     }
