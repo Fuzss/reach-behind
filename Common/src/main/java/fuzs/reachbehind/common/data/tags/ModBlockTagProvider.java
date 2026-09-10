@@ -17,11 +17,11 @@ public class ModBlockTagProvider extends AbstractTagProvider<Block> {
 
     @Override
     public void addTags(HolderLookup.Provider registries) {
-        addCommonTagEntries(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_BLOCK_TAG));
+        addCommonBlocks(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_BLOCK_TAG));
         this.tag(ModRegistry.REQUIRES_DIRECT_CLICKS_BLOCK_TAG);
     }
 
-    public static AbstractTagAppender<Block> addCommonTagEntries(AbstractTagAppender<Block> tagAppender) {
+    public static AbstractTagAppender<Block> addCommonBlocks(AbstractTagAppender<Block> tagAppender) {
         return tagAppender.addTag(BlockTags.WALL_SIGNS, BlockTags.BANNERS).addOptionalTag("fastitemframes:item_frames");
     }
 }

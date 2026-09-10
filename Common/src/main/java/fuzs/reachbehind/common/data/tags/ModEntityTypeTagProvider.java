@@ -7,6 +7,7 @@ import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypeIds;
 
 public class ModEntityTypeTagProvider extends AbstractTagProvider<EntityType<?>> {
 
@@ -16,11 +17,11 @@ public class ModEntityTypeTagProvider extends AbstractTagProvider<EntityType<?>>
 
     @Override
     public void addTags(HolderLookup.Provider registries) {
-        addCommonTagEntries(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG));
+        addCommonEntities(this.tag(ModRegistry.PASSES_CLICKS_THROUGH_ENTITY_TYPE_TAG));
     }
 
-    public static AbstractTagAppender<EntityType<?>> addCommonTagEntries(AbstractTagAppender<EntityType<?>> tagAppender) {
-        return tagAppender.add(EntityType.ITEM_FRAME, EntityType.GLOW_ITEM_FRAME)
+    public static AbstractTagAppender<EntityType<?>> addCommonEntities(AbstractTagAppender<EntityType<?>> tagAppender) {
+        return tagAppender.add(EntityTypeIds.ITEM_FRAME, EntityTypeIds.GLOW_ITEM_FRAME)
                 .addOptionalTag("fastitemframes:item_frames");
     }
 }

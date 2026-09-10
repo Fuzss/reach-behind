@@ -3,24 +3,15 @@ package fuzs.reachbehind.common.config;
 import fuzs.puzzleslib.common.api.config.v3.Config;
 import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
-import fuzs.puzzleslib.common.api.config.v3.serialization.ConfigDataSet;
-import fuzs.puzzleslib.common.api.config.v3.serialization.KeyedValueProvider;
-import fuzs.reachbehind.common.data.tags.ModBlockTagProvider;
-import fuzs.reachbehind.common.data.tags.ModEntityTypeTagProvider;
-import fuzs.reachbehind.common.init.ModRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.List;
 import java.util.Objects;
 
 public class CommonConfig implements ConfigCore, GlobalSharedConfig {
     @Config(description = {
             "Support passing clicks through attached blocks only when interacting with an empty hand.",
             "This generally allows the attached block to still be used, like applying dyes and ink to signs."
-    })
+    }, worldRestart = true)
     public boolean requiresEmptyHand = true;
 
     protected ModConfigSpec.ConfigValue<Boolean> passClicksThroughValue;
