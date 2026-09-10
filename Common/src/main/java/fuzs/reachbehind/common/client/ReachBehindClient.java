@@ -9,16 +9,12 @@ import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
 import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.common.ReachBehind;
 import fuzs.reachbehind.common.client.handler.ClientMenuProviderInteraction;
-import fuzs.reachbehind.common.config.ClientConfig;
-import fuzs.reachbehind.common.config.ServerConfig;
-import fuzs.reachbehind.common.config.SharedConfig;
-import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
+import fuzs.reachbehind.common.config.CommonConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
 
 public class ReachBehindClient implements ClientModConstructor {
     public static final KeyMapping TOGGLE_REACHING_BEHIND_BLOCKS_KEY_MAPPING = KeyMappingHelper.registerUnboundKeyMapping(
@@ -44,29 +40,29 @@ public class ReachBehindClient implements ClientModConstructor {
     public void onRegisterKeyMappings(KeyMappingsContext context) {
         context.registerKeyMapping(TOGGLE_REACHING_BEHIND_BLOCKS_KEY_MAPPING,
                 KeyActivationHandler.forGame((Minecraft minecraft) -> {
-                    SharedConfig sharedConfig = chooseSharedConfig(minecraft);
-                    Component component = chooseFeedbackComponent(sharedConfig);
+                    boolean mayUseToggleKeybind = mayUseToggleKeybind(minecraft);
+                    Component component = pickFeedbackComponent(mayUseToggleKeybind);
                     minecraft.gui.hud.setOverlayMessage(component, false);
                 }));
     }
 
-    /**
-     * @see AbstractMenuProviderInteraction
-     */
-    private static @Nullable SharedConfig chooseSharedConfig(Minecraft minecraft) {
+    private static boolean mayUseToggleKeybind(Minecraft minecraft) {
         if (!NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {
-            return ReachBehind.CONFIG.get(ClientConfig.class);
+            // The mod is only installed client side, we are using client-only mode which mimics player interactions.
+            return true;
         } else if (minecraft.isLocalServer()) {
-            return ReachBehind.CONFIG.get(ServerConfig.class);
+            // The mod is running in singleplayer, we have full control over both the client & server.
+            return true;
         } else {
-            return null;
+            // The mod is installed on the multiplayer server, control is out of our hands.
+            return false;
         }
     }
 
-    private static Component chooseFeedbackComponent(SharedConfig sharedConfig) {
-        if (sharedConfig != null) {
+    private static Component pickFeedbackComponent(boolean mayUseToggleKeybind) {
+        if (mayUseToggleKeybind) {
             return Component.translatable(TOGGLE_REACHING_BEHIND_BLOCKS_STATUS_TRANSLATION_KEY,
-                    sharedConfig.flipPassClicksToAttachedBlock() ? ON_COMPONENT : OFF_COMPONENT);
+                    ReachBehind.CONFIG.get(CommonConfig.class).togglePassClicksBehind() ? ON_COMPONENT : OFF_COMPONENT);
         } else {
             return Component.translatable(TOGGLE_REACHING_BEHIND_BLOCKS_UNAVAILABLE_TRANSLATION_KEY);
         }

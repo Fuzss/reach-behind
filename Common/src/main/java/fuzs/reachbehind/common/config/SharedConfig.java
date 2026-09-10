@@ -1,7 +1,7 @@
 package fuzs.reachbehind.common.config;
 
 public interface SharedConfig {
-    boolean supportsCurrentEnvironment(boolean isClientSide);
+    boolean passClicksThrough();
 
-    boolean flipPassClicksToAttachedBlock();
+    boolean requiresEmptyHand();
 }

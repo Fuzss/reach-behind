@@ -2,8 +2,10 @@ package fuzs.reachbehind.common.client.handler;
 
 import fuzs.puzzleslib.common.api.core.v1.ModLoaderEnvironment;
 import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
+import fuzs.puzzleslib.common.api.network.v4.NetworkingHelper;
 import fuzs.reachbehind.common.ReachBehind;
 import fuzs.reachbehind.common.config.ClientConfig;
+import fuzs.reachbehind.common.config.CommonConfig;
 import fuzs.reachbehind.common.handler.AbstractMenuProviderInteraction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -27,7 +29,7 @@ public final class ClientMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResult onUseInteraction(Minecraft minecraft, LocalPlayer player, InteractionHand interactionHand, HitResult hitResult) {
-        if (!ReachBehind.CONFIG.get(ClientConfig.class).supportsCurrentEnvironment(true)) {
+        if (!supportsCurrentEnvironment()) {
             return EventResult.PASS;
         }
 
@@ -61,6 +63,16 @@ public final class ClientMenuProviderInteraction extends AbstractMenuProviderInt
         }
     }
 
+    private static boolean supportsCurrentEnvironment() {
+        if (!ReachBehind.CONFIG.get(CommonConfig.class).passClicksThrough()) {
+            return false;
+        } else if (NetworkingHelper.isModPresentServerside(ReachBehind.MOD_ID)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @Override
     protected boolean isEntityPassingThroughClicks(Entity entity) {
         return ReachBehind.CONFIG.get(ClientConfig.class).passesEntityClicksThrough.contains(entity.getType());
@@ -69,11 +81,6 @@ public final class ClientMenuProviderInteraction extends AbstractMenuProviderInt
     @Override
     protected boolean isBlockPassingThroughClicks(BlockState blockState) {
         return ReachBehind.CONFIG.get(ClientConfig.class).passesBlockClicksThrough.contains(blockState.getBlock());
-    }
-
-    @Override
-    protected boolean requiresEmptyHand() {
-        return ReachBehind.CONFIG.get(ClientConfig.class).requiresEmptyHand;
     }
 
     @Override

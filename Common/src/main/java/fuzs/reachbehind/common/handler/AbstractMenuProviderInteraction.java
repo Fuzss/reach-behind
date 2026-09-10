@@ -1,5 +1,7 @@
 package fuzs.reachbehind.common.handler;
 
+import fuzs.reachbehind.common.ReachBehind;
+import fuzs.reachbehind.common.config.CommonConfig;
 import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -75,7 +77,7 @@ public abstract class AbstractMenuProviderInteraction {
     private @Nullable InteractionResult interactWithAttachedBlock(Player player, Level level, InteractionHand interactionHand, BlockPos blockPos, Direction neighborDirection, Function<BlockPos, BlockHitResult> hitResultGetter) {
         if (!player.isSecondaryUseActive()) {
             ItemStack itemInHand = player.getItemInHand(interactionHand);
-            if (!this.requiresEmptyHand() || itemInHand.isEmpty()) {
+            if (!this.requiresEmptyHand(level.isClientSide()) || itemInHand.isEmpty()) {
                 BlockPos neighborBlockPos = blockPos.relative(neighborDirection);
                 BlockState neighborBlockState = level.getBlockState(neighborBlockPos);
                 if (!neighborBlockState.is(ModRegistry.REQUIRES_DIRECT_CLICKS_BLOCK_TAG)
@@ -93,7 +95,9 @@ public abstract class AbstractMenuProviderInteraction {
         return null;
     }
 
-    protected abstract boolean requiresEmptyHand();
+    protected final boolean requiresEmptyHand(boolean isClientSide) {
+        return ReachBehind.CONFIG.get(CommonConfig.class).getSharedConfig(isClientSide).requiresEmptyHand();
+    }
 
     protected abstract @Nullable InteractionResult useBlock(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult hitResult);
 }

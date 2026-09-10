@@ -2,7 +2,7 @@ package fuzs.reachbehind.common.handler;
 
 import fuzs.puzzleslib.common.api.event.v1.core.EventResultHolder;
 import fuzs.reachbehind.common.ReachBehind;
-import fuzs.reachbehind.common.config.ServerConfig;
+import fuzs.reachbehind.common.config.CommonConfig;
 import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -26,8 +26,10 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResultHolder<InteractionResult> onUseEntity(Player player, Level level, InteractionHand interactionHand, Entity entity, Vec3 hitVector) {
-        if (!ReachBehind.CONFIG.getHolder(ServerConfig.class).isAvailable()
-                || !ReachBehind.CONFIG.get(ServerConfig.class).supportsCurrentEnvironment(level.isClientSide())) {
+        if (!ReachBehind.CONFIG.getHolder(CommonConfig.class).isAvailable()
+                || !ReachBehind.CONFIG.get(CommonConfig.class)
+                .getSharedConfig(level.isClientSide())
+                .passClicksThrough()) {
             return EventResultHolder.pass();
         }
 
@@ -40,8 +42,10 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     }
 
     public EventResultHolder<InteractionResult> onUseBlock(Player player, Level level, InteractionHand interactionHand, BlockHitResult hitResult) {
-        if (!ReachBehind.CONFIG.getHolder(ServerConfig.class).isAvailable()
-                || !ReachBehind.CONFIG.get(ServerConfig.class).supportsCurrentEnvironment(level.isClientSide())) {
+        if (!ReachBehind.CONFIG.getHolder(CommonConfig.class).isAvailable()
+                || !ReachBehind.CONFIG.get(CommonConfig.class)
+                .getSharedConfig(level.isClientSide())
+                .passClicksThrough()) {
             return EventResultHolder.pass();
         }
 
@@ -63,11 +67,6 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
         return blockState.is(ModRegistry.PASSES_CLICKS_THROUGH_BLOCK_TAG);
     }
 
-    @Override
-    protected boolean requiresEmptyHand() {
-        return ReachBehind.CONFIG.get(ServerConfig.class).requiresEmptyHand;
-    }
-
     /**
      * @see BlockState#useItemOn(ItemStack, Level, Player, InteractionHand, BlockHitResult)
      * @see BlockState#useWithoutItem(Level, Player, BlockHitResult)
@@ -76,7 +75,7 @@ public final class CommonMenuProviderInteraction extends AbstractMenuProviderInt
     protected @Nullable InteractionResult useBlock(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
         ItemStack itemStack = player.getItemInHand(interactionHand).copy();
         InteractionResult useItemOnResult;
-        if (!this.requiresEmptyHand()) {
+        if (!this.requiresEmptyHand(level.isClientSide())) {
             useItemOnResult = blockState.useItemOn(player.getItemInHand(interactionHand),
                     level,
                     player,
