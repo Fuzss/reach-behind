@@ -1,15 +1,15 @@
 package fuzs.reachbehind.common.data.tags;
 
-import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
-import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagAppender;
-import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagProvider;
+import fuzs.puzzleslib.common.api.data.v3.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.data.v3.tags.AbstractTagAppender;
+import fuzs.puzzleslib.common.api.data.v3.tags.AbstractTagsProvider;
 import fuzs.reachbehind.common.init.ModRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypeIds;
 
-public class ModEntityTypeTagsProvider extends AbstractTagProvider<EntityType<?>> {
+public class ModEntityTypeTagsProvider extends AbstractTagsProvider<EntityType<?>> {
 
     public ModEntityTypeTagsProvider(DataProviderContext context) {
         super(Registries.ENTITY_TYPE, context);

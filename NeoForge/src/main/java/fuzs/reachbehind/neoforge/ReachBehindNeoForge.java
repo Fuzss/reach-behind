@@ -2,7 +2,7 @@ package fuzs.reachbehind.neoforge;
 
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.common.api.core.v1.ModLoaderEnvironment;
-import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
+import fuzs.puzzleslib.neoforge.api.data.v3.core.DataProviderBuilder;
 import fuzs.reachbehind.common.ReachBehind;
 import fuzs.reachbehind.common.data.tags.ModBlockTagsProvider;
 import fuzs.reachbehind.common.data.tags.ModEntityTypeTagsProvider;
@@ -18,8 +18,7 @@ public class ReachBehindNeoForge {
             ModConstructor.construct(ReachBehind.MOD_ID, ReachBehind::new);
         }
 
-        DataProviderHelper.registerDataProviders(ReachBehind.MOD_ID,
-                ModBlockTagsProvider::new,
-                ModEntityTypeTagsProvider::new);
+        DataProviderBuilder.of(ReachBehind.MOD_ID)
+                .addProvider(ModBlockTagsProvider::new, ModEntityTypeTagsProvider::new);
     }
 }
